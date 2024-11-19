@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dovfe1epmv7kc"]
+
+[ext_resource type="PackedScene" uid="uid://dheu4dabsulr0" path="res://player/player.tscn" id="1_jtqdl"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("left_pos", "up_pos", "right_pos") instance=ExtResource("1_jtqdl")]
+position = Vector2(574, 498)
+left_pos = NodePath("../left")
+up_pos = NodePath("../up")
+right_pos = NodePath("../right")
+
+[node name="left" type="Marker2D" parent="."]
+position = Vector2(202, 485)
+
+[node name="up" type="Marker2D" parent="."]
+position = Vector2(578, 183)
+
+[node name="right" type="Marker2D" parent="."]
+position = Vector2(974, 502)
