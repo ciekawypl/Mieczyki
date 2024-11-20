@@ -1,49 +1,52 @@
 extends Sprite2D
 
-enum {LEFT, UP, RIGHT}
-
 var is_held : bool
+var current_side
 
 @export var left_pos : Marker2D
 @export var up_pos : Marker2D
 @export var right_pos : Marker2D
-var rest_pos : Vector2
+@export var rest_pos : Marker2D
 
-@export var hold_timer : Timer
+signal side_changed(current_side : Side)
+signal action(action : Action)
 
 func _ready() -> void:
-	rest_pos = global_position
+	global_position = rest_pos.global_position
 
 
 func draw_sword(side):
 	is_held = true
 	
-	if side == UP:
+	if side == Side.UP:
+		current_side = side
 		global_position = up_pos.global_position
-	elif side == LEFT:
+	elif side == Side.LEFT:
+		current_side = side
 		global_position = left_pos.global_position
-	elif side == RIGHT:
+	elif side == Side.RIGHT:
+		current_side = side
 		global_position = right_pos.global_position
+	
+	side_changed.emit(current_side)
 
 
 func rest_sword():
-	global_position = rest_pos
+	is_held = false
+	current_side = Side.REST
+	side_changed.emit(current_side)
+	
+	global_position = rest_pos.global_position
 
 
-func _process(delta: float) -> void:
-	#print(hold_timer.time_left)
+func _process(_delta: float) -> void:
 	if not is_held:
 		if Input.is_action_pressed("up"):
-			draw_sword(UP)
+			draw_sword(Side.UP)
 		elif Input.is_action_pressed("left"):
-			draw_sword(LEFT)
+			draw_sword(Side.LEFT)
 		elif Input.is_action_pressed("right"):
-			draw_sword(RIGHT)
+			draw_sword(Side.RIGHT)
 	else:
-		if not Input.is_anything_pressed():
-			is_held = false
-			hold_timer.start()
-
-
-func _on_hold_timer_timeout() -> void:
-	rest_sword()
+		if not Input.is_action_pressed("left") and not Input.is_action_pressed("right") and not Input.is_action_pressed("up"):
+			rest_sword()

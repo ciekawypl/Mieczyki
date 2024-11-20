@@ -3,14 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cr4tpb46uxjth" path="res://icon.svg" id="1_54toh"]
 [ext_resource type="Script" path="res://player/player.gd" id="2_3n1yw"]
 
-[node name="Player" type="Sprite2D" node_paths=PackedStringArray("hold_timer")]
+[node name="Player" type="Sprite2D"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_54toh")
 script = ExtResource("2_3n1yw")
-hold_timer = NodePath("hold_timer")
-
-[node name="hold_timer" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
-
-[connection signal="timeout" from="hold_timer" to="." method="_on_hold_timer_timeout"]
