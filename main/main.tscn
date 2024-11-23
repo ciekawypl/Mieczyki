@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dovfe1epmv7kc"]
+[gd_scene load_steps=2 format=3 uid="uid://dovfe1epmv7kc"]
 
 [ext_resource type="PackedScene" uid="uid://dheu4dabsulr0" path="res://player/player.tscn" id="1_jtqdl"]
-[ext_resource type="Script" path="res://main/node.gd" id="2_lbkcu"]
 
 [node name="Main" type="Node2D"]
 
@@ -22,8 +21,3 @@ position = Vector2(974, 502)
 
 [node name="rest" type="Marker2D" parent="."]
 position = Vector2(576, 474)
-
-[node name="Node" type="Node" parent="."]
-script = ExtResource("2_lbkcu")
-
-[connection signal="side_changed" from="Player" to="Node" method="do"]
