@@ -1,5 +1,6 @@
 extends Node
 
+@export var player : Player
 @export var initial_state : State
 
 var current_state : State
@@ -21,7 +22,7 @@ func _process(delta: float) -> void:
 		current_state.update(delta)
 
 
-func on_child_transitioned(state, new_state_name):
+func on_child_transitioned(state, new_state_name : String):
 	if state != current_state:
 		return
 	
@@ -34,3 +35,17 @@ func on_child_transitioned(state, new_state_name):
 	
 	new_state.enter()
 	current_state = new_state
+	player.state_changed.emit(player.current_data)
+
+
+func force_transition(new_state_name : String):
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+	
+	if current_state:
+		current_state.exit()
+	
+	new_state.enter()
+	current_state = new_state
+	player.state_changed.emit(player.current_data)

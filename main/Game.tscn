@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://dovfe1epmv7kc"]
+
+[ext_resource type="PackedScene" uid="uid://dheu4dabsulr0" path="res://player/player.tscn" id="1_1ip8y"]
+[ext_resource type="Script" path="res://main/game.gd" id="1_77ycd"]
+[ext_resource type="PackedScene" uid="uid://c0cb3yhaa1pmj" path="res://enemy/Enemy.tscn" id="3_ar6of"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_77ycd")
+player = NodePath("Player")
+
+[node name="Player" parent="." node_paths=PackedStringArray("left_pos", "up_pos", "right_pos", "rest_pos") instance=ExtResource("1_1ip8y")]
+left_pos = NodePath("../left")
+up_pos = NodePath("../up")
+right_pos = NodePath("../right")
+rest_pos = NodePath("../rest")
+
+[node name="left" type="Marker2D" parent="."]
+position = Vector2(202, 485)
+
+[node name="up" type="Marker2D" parent="."]
+position = Vector2(578, 183)
+
+[node name="right" type="Marker2D" parent="."]
+position = Vector2(974, 502)
+
+[node name="rest" type="Marker2D" parent="."]
+position = Vector2(576, 474)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 385.0
+offset_top = 189.0
+offset_right = 425.0
+offset_bottom = 212.0
+text = "test"
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_ar6of")]
+player = NodePath("../Player")
+
+[node name="won Label" type="Label" parent="."]
+visible = false
+offset_left = 59.0
+offset_top = 57.0
+offset_right = 128.0
+offset_bottom = 80.0
+text = "Wygrano"
+
+[node name="lost Label" type="Label" parent="."]
+visible = false
+offset_left = 66.0
+offset_top = 60.0
+offset_right = 145.0
+offset_bottom = 83.0
+text = "Przegrano"
+
+[connection signal="attack" from="Player" to="Enemy" method="check_attack"]
+[connection signal="lost_signal" from="Player" to="." method="when_lost"]
+[connection signal="state_changed" from="Player" to="." method="get_state"]
+[connection signal="won_signal" from="Player" to="." method="when_won"]

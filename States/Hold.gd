@@ -13,12 +13,15 @@ func enter():
 	if Input.is_action_pressed("up"):
 		player.global_position = player.up_pos.global_position
 		current_key = "up"
+		player.current_data.current_side = PlayerData.UP
 	elif Input.is_action_pressed("left"):
 		player.global_position = player.left_pos.global_position
 		current_key = "left"
+		player.current_data.current_side = PlayerData.LEFT
 	elif Input.is_action_pressed("right"):
 		player.global_position = player.right_pos.global_position
 		current_key = "right"
+		player.current_data.current_side = PlayerData.RIGHT
 
 
 func update(_delta: float):
@@ -27,6 +30,9 @@ func update(_delta: float):
 	
 	if Input.is_action_just_pressed("block"):
 		transitioned.emit(self, "block")
+	
+	if Input.is_action_just_pressed("attack"):
+		transitioned.emit(self, "attack")
 
 
 func _on_hold_timer_timeout() -> void:

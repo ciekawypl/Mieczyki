@@ -6,6 +6,7 @@ class_name Block extends State
 var ready_to_exit : bool
 
 func enter():
+	player.current_data.current_action = PlayerData.BLOCK
 	ready_to_exit = false
 	block_timer.start()
 	
@@ -13,6 +14,7 @@ func enter():
 
 
 func exit():
+	player.current_data.current_action = PlayerData.NONE
 	player.self_modulate = player.modulate
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dheu4dabsulr0"]
+[gd_scene load_steps=10 format=3 uid="uid://dheu4dabsulr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr4tpb46uxjth" path="res://icon.svg" id="1_54toh"]
 [ext_resource type="Script" path="res://player/player.gd" id="2_3n1yw"]
@@ -7,14 +7,17 @@
 [ext_resource type="Script" path="res://States/Hold.gd" id="5_l5t5y"]
 [ext_resource type="Script" path="res://States/Block.gd" id="6_rh2ge"]
 [ext_resource type="Script" path="res://States/Attack.gd" id="7_hgta3"]
+[ext_resource type="Script" path="res://States/Won State.gd" id="8_cjonn"]
+[ext_resource type="Script" path="res://States/Lost State.gd" id="9_ka6sb"]
 
 [node name="Player" type="Sprite2D"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_54toh")
 script = ExtResource("2_3n1yw")
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state")]
 script = ExtResource("3_c66hn")
+player = NodePath("..")
 initial_state = NodePath("Rest")
 
 [node name="Rest" type="Node" parent="State Machine" node_paths=PackedStringArray("player")]
@@ -39,9 +42,21 @@ block_timer = NodePath("Block Timer")
 wait_time = 0.15
 one_shot = true
 
-[node name="Attack" type="Node" parent="State Machine" node_paths=PackedStringArray("player")]
+[node name="Attack" type="Node" parent="State Machine" node_paths=PackedStringArray("player", "attack_timer")]
 script = ExtResource("7_hgta3")
 player = NodePath("../..")
+attack_timer = NodePath("Attack Timer")
+
+[node name="Attack Timer" type="Timer" parent="State Machine/Attack"]
+wait_time = 0.3
+one_shot = true
+
+[node name="Won" type="Node" parent="State Machine"]
+script = ExtResource("8_cjonn")
+
+[node name="Lost" type="Node" parent="State Machine"]
+script = ExtResource("9_ka6sb")
 
 [connection signal="timeout" from="State Machine/Hold/Hold Timer" to="State Machine/Hold" method="_on_hold_timer_timeout"]
 [connection signal="timeout" from="State Machine/Block/Block Timer" to="State Machine/Block" method="_on_block_timer_timeout"]
+[connection signal="timeout" from="State Machine/Attack/Attack Timer" to="State Machine/Attack" method="_on_attack_timer_timeout"]

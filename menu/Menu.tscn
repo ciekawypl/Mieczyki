@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf82uv5nc1csw"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_bq60o"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_bq60o")
+
+[node name="host" type="Button" parent="."]
+offset_left = 123.0
+offset_top = 104.0
+offset_right = 166.0
+offset_bottom = 135.0
+text = "host"
+
+[node name="join" type="Button" parent="."]
+offset_left = 246.0
+offset_top = 108.0
+offset_right = 283.0
+offset_bottom = 139.0
+text = "join"
+
+[connection signal="pressed" from="host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="join" to="." method="_on_join_pressed"]
