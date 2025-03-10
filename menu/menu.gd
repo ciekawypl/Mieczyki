@@ -2,8 +2,9 @@ extends Node2D
  
 var peer
 
-var address = "192.168.100.4"
-var port = 40000
+@export var joinaddr : LineEdit
+@export var joinport : LineEdit
+@export var hostport : LineEdit
  
 func _ready() -> void:
 	multiplayer.peer_connected.connect(peer_connected)
@@ -12,19 +13,19 @@ func _ready() -> void:
 
 func _on_host_pressed() -> void:
 	peer = ENetMultiplayerPeer.new()
-	peer.create_server(port)
+	peer.create_server(hostport.text.to_int())
 	
 	multiplayer.multiplayer_peer = peer
 
 
 func _on_join_pressed() -> void:
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client(address, port)
+	peer.create_client(joinaddr.text, joinport.text.to_int())
 	
 	multiplayer.multiplayer_peer = peer
 
 
-func peer_connected(id):
+func peer_connected(_id):
 	pass
 
 

@@ -9,8 +9,6 @@ func enter():
 	player.current_data.current_action = PlayerData.BLOCK
 	ready_to_exit = false
 	block_timer.start()
-	
-	player.self_modulate = Color.RED
 
 
 func exit():

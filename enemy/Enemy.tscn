@@ -1,6 +1,113 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0cb3yhaa1pmj"]
+[gd_scene load_steps=14 format=3 uid="uid://c0cb3yhaa1pmj"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_4uynd"]
+[ext_resource type="Texture2D" uid="uid://difiqb5ch74bf" path="res://enemy/asset/dither_it_leftattack.png" id="2_6oav8"]
+[ext_resource type="Texture2D" uid="uid://bj2ci4a4uw6ew" path="res://enemy/asset/dither_it_leftblock.png" id="3_xcu8l"]
+[ext_resource type="Texture2D" uid="uid://d2s6fah8phlo7" path="res://enemy/asset/dither_it_lefthold.png" id="4_s8brd"]
+[ext_resource type="Texture2D" uid="uid://bmjrj78w5qhv0" path="res://enemy/asset/dither_it_recover.png" id="5_psiw1"]
+[ext_resource type="Texture2D" uid="uid://bbyasvipbyhq7" path="res://enemy/asset/dither_it_rest.png" id="6_md0ib"]
+[ext_resource type="Texture2D" uid="uid://camsjqs2llfcb" path="res://enemy/asset/dither_it_rightattack.png" id="7_k135f"]
+[ext_resource type="Texture2D" uid="uid://bb8lh2a3vpioj" path="res://enemy/asset/dither_it_rightblock.png" id="8_b2acr"]
+[ext_resource type="Texture2D" uid="uid://df103scjdj3jd" path="res://enemy/asset/dither_it_righthold.png" id="9_m625j"]
+[ext_resource type="Texture2D" uid="uid://c8gkqw1ciu14l" path="res://enemy/asset/dither_it_upattack.png" id="10_06k4y"]
+[ext_resource type="Texture2D" uid="uid://cp5hkpw2sq8rb" path="res://enemy/asset/dither_it_upblock.png" id="11_qqkn0"]
+[ext_resource type="Texture2D" uid="uid://dw7260h007feo" path="res://enemy/asset/dither_it_uphold.png" id="12_7xlfb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3w3lw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6oav8")
+}],
+"loop": true,
+"name": &"leftattack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xcu8l")
+}],
+"loop": true,
+"name": &"leftblock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_s8brd")
+}],
+"loop": true,
+"name": &"lefthold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_psiw1")
+}],
+"loop": true,
+"name": &"recovery",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_md0ib")
+}],
+"loop": true,
+"name": &"rest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_k135f")
+}],
+"loop": true,
+"name": &"rightattack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_b2acr")
+}],
+"loop": true,
+"name": &"rightblock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_m625j")
+}],
+"loop": true,
+"name": &"righthold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_06k4y")
+}],
+"loop": true,
+"name": &"upattack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_qqkn0")
+}],
+"loop": true,
+"name": &"upblock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_7xlfb")
+}],
+"loop": true,
+"name": &"uphold",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_4uynd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3w3lw")
+animation = &"rest"
+centered = false

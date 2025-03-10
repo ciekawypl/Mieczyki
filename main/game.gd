@@ -2,12 +2,18 @@ extends Node2D
 
 @export var player : Player
 
+@rpc("any_peer", "call_local")
+func on_end():
+	get_tree().change_scene_to_file("res://waiting/Wainting.tscn")
+
+
 func when_won():
-	$"won Label".show()
+	Global.won = true
+	on_end.rpc()
 
 
 func when_lost():
-	$"lost Label".show()
+	Global.won = false
 
 
 func get_state(data : PlayerData):
@@ -19,17 +25,4 @@ func get_state(data : PlayerData):
 func send_state(side, action):
 	$Enemy.current_data.current_side = side
 	$Enemy.current_data.current_action = action
-	
-	if side == PlayerData.LEFT:
-		$Label.text = "left"
-	elif side == PlayerData.RIGHT:
-		$Label.text = "right"
-	elif side == PlayerData.UP:
-		$Label.text = "up"
-	elif side == PlayerData.REST:
-		$Label.text = "rest"
-	
-	if action == PlayerData.BLOCK:
-		$Label.text += " " + "block"
-	elif action == PlayerData.ATTACK:
-		$Label.text += " " + "attack"
+	$Enemy.update_txt()

@@ -6,7 +6,6 @@ class_name Attack extends State
 
 func enter():
 	player.current_data.current_action = PlayerData.ATTACK
-	player.self_modulate = Color.GREEN
 	attack_timer.start()
 	player.attack.emit(player.current_data)
 

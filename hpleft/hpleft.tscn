@@ -1,0 +1,235 @@
+[gd_scene load_steps=10 format=3 uid="uid://b62t4n700axb5"]
+
+[ext_resource type="Script" path="res://hpleft/hpleft.gd" id="1_tn6vn"]
+[ext_resource type="Texture2D" uid="uid://cy0hgi3jy5oju" path="res://hpleft/serce.png" id="2_3sy0w"]
+
+[sub_resource type="Animation" id="Animation_8ysxo"]
+resource_name = "4"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect5:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4hi20"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect5:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nggnk"]
+resource_name = "3"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect4:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_npp18"]
+resource_name = "2"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_lng76"]
+resource_name = "1"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vslud"]
+resource_name = "0"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sk24i"]
+_data = {
+"0": SubResource("Animation_vslud"),
+"1": SubResource("Animation_lng76"),
+"2": SubResource("Animation_npp18"),
+"3": SubResource("Animation_nggnk"),
+"4": SubResource("Animation_8ysxo"),
+"RESET": SubResource("Animation_4hi20")
+}
+
+[node name="Hpleft" type="CanvasLayer" node_paths=PackedStringArray("anim")]
+script = ExtResource("1_tn6vn")
+anim = NodePath("AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.356863)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+modulate = Color(0.647395, 0.647395, 0.647395, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -634.0
+offset_top = -109.0
+offset_right = 632.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3sy0w")
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3sy0w")
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3sy0w")
+
+[node name="TextureRect4" type="TextureRect" parent="ColorRect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3sy0w")
+
+[node name="TextureRect5" type="TextureRect" parent="ColorRect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3sy0w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sk24i")
+}

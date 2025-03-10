@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://dheu4dabsulr0"]
+[gd_scene load_steps=23 format=3 uid="uid://dheu4dabsulr0"]
 
-[ext_resource type="Texture2D" uid="uid://cr4tpb46uxjth" path="res://icon.svg" id="1_54toh"]
 [ext_resource type="Script" path="res://player/player.gd" id="2_3n1yw"]
 [ext_resource type="Script" path="res://player/state_machine.gd" id="3_c66hn"]
 [ext_resource type="Script" path="res://States/Rest.gd" id="4_goq5o"]
@@ -9,10 +8,112 @@
 [ext_resource type="Script" path="res://States/Attack.gd" id="7_hgta3"]
 [ext_resource type="Script" path="res://States/Won State.gd" id="8_cjonn"]
 [ext_resource type="Script" path="res://States/Lost State.gd" id="9_ka6sb"]
+[ext_resource type="Script" path="res://States/Success.gd" id="9_o1p65"]
+[ext_resource type="Texture2D" uid="uid://dhi66yssxx3md" path="res://player/asset/leftattack.png" id="9_weix8"]
+[ext_resource type="Script" path="res://States/Failure.gd" id="10_33h7x"]
+[ext_resource type="Texture2D" uid="uid://tlsbu62ql7uu" path="res://player/asset/leftblock.png" id="10_dlukf"]
+[ext_resource type="Texture2D" uid="uid://3ajkwnap3kbn" path="res://player/asset/lefthold.png" id="11_ms1ad"]
+[ext_resource type="Texture2D" uid="uid://b0a26whr80v75" path="res://player/asset/dither_it_recovery.png" id="12_leu3n"]
+[ext_resource type="Texture2D" uid="uid://b3s7cknuuwxky" path="res://player/asset/dither_it_rest.png" id="13_83c2v"]
+[ext_resource type="Texture2D" uid="uid://djw5oqc5ivclo" path="res://player/asset/dither_it_rightattack.png" id="14_6617e"]
+[ext_resource type="Texture2D" uid="uid://cr2arou8wweh2" path="res://player/asset/dither_it_rightblock.png" id="15_pieyy"]
+[ext_resource type="Texture2D" uid="uid://2ohwf1acoowd" path="res://player/asset/righthold.png" id="16_y5f3f"]
+[ext_resource type="Texture2D" uid="uid://chdopfw4lew7g" path="res://player/asset/dither_it_upattack.png" id="17_1o7w7"]
+[ext_resource type="Texture2D" uid="uid://bmasjytbfmgis" path="res://player/asset/dither_it_upblock.png" id="18_ikc3v"]
+[ext_resource type="Texture2D" uid="uid://nw7ux1272k43" path="res://player/asset/dither_it_uphold.png" id="19_6qw8a"]
 
-[node name="Player" type="Sprite2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_54toh")
+[sub_resource type="SpriteFrames" id="SpriteFrames_05oln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_weix8")
+}],
+"loop": true,
+"name": &"leftattack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_dlukf")
+}],
+"loop": true,
+"name": &"leftblock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ms1ad")
+}],
+"loop": true,
+"name": &"lefthold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_leu3n")
+}],
+"loop": true,
+"name": &"recovery",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_83c2v")
+}],
+"loop": true,
+"name": &"rest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_6617e")
+}],
+"loop": true,
+"name": &"rightattack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_pieyy")
+}],
+"loop": true,
+"name": &"rightblock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_y5f3f")
+}],
+"loop": true,
+"name": &"righthold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_1o7w7")
+}],
+"loop": true,
+"name": &"upattack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ikc3v")
+}],
+"loop": true,
+"name": &"upblock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_6qw8a")
+}],
+"loop": true,
+"name": &"uphold",
+"speed": 5.0
+}]
+
+[node name="Player" type="Node2D"]
 script = ExtResource("2_3n1yw")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state")]
@@ -57,6 +158,32 @@ script = ExtResource("8_cjonn")
 [node name="Lost" type="Node" parent="State Machine"]
 script = ExtResource("9_ka6sb")
 
+[node name="Success" type="Node" parent="State Machine" node_paths=PackedStringArray("player", "timer")]
+script = ExtResource("9_o1p65")
+player = NodePath("../..")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="State Machine/Success"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Failure" type="Node" parent="State Machine" node_paths=PackedStringArray("player", "timer")]
+script = ExtResource("10_33h7x")
+player = NodePath("../..")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="State Machine/Failure"]
+wait_time = 3.0
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_05oln")
+animation = &"rest"
+centered = false
+
+[connection signal="state_changed" from="." to="." method="update_txt"]
 [connection signal="timeout" from="State Machine/Hold/Hold Timer" to="State Machine/Hold" method="_on_hold_timer_timeout"]
 [connection signal="timeout" from="State Machine/Block/Block Timer" to="State Machine/Block" method="_on_block_timer_timeout"]
 [connection signal="timeout" from="State Machine/Attack/Attack Timer" to="State Machine/Attack" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="State Machine/Success/Timer" to="State Machine/Success" method="_on_timer_timeout"]
+[connection signal="timeout" from="State Machine/Failure/Timer" to="State Machine/Failure" method="_on_timer_timeout"]

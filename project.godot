@@ -15,6 +15,20 @@ run/main_scene="res://menu/Menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://global.gd"
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+window/size/mode=3
+
+[gui]
+
+theme/custom_font="res://Commodore-64-v6.3.TTF"
+
 [input]
 
 left={
@@ -45,5 +59,6 @@ block={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
