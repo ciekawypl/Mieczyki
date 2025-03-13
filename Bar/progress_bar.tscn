@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch7dribkj158i"]
+
+[ext_resource type="Script" path="res://Bar/progress_bar.gd" id="1_vv5tm"]
+[ext_resource type="Texture2D" uid="uid://blkmms6nwjlli" path="res://Bar/Screenshot From 2025-03-13 12-13-04.png" id="2_deoqk"]
+
+[node name="progress bar" type="CanvasLayer" node_paths=PackedStringArray("bar")]
+script = ExtResource("1_vv5tm")
+bar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 367.0
+offset_top = 295.0
+offset_right = 1010.0
+offset_bottom = 369.0
+scale = Vector2(0.1, 0.1)
+value = 100.0
+texture_progress = ExtResource("2_deoqk")

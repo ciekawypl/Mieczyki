@@ -5,18 +5,22 @@ var here : bool
 func _ready() -> void:
 	$AnimationPlayer.play("big text")
 	if Global.won:
-		$Label.text = "WYGRANO"
+		#$Label.text = "WYGRANO"
+		$wygrano.show()
+		$przegrano.hide()
 	else:
-		$Label.text = "PRZEGRANO"
+		#$Label.text = "WYGRANO" #do zmiany
+		$wygrano.hide()
+		$przegrano.show()
 
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("attack"):
-		$Label3.show()
+		$oczekiwanie.show()
 		here = true
 		check.rpc()
 	else:
-		$Label3.hide()
+		$oczekiwanie.hide()
 		here = false
 
 @rpc("any_peer")

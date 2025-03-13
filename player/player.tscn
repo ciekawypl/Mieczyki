@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dheu4dabsulr0"]
+[gd_scene load_steps=24 format=3 uid="uid://dheu4dabsulr0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="2_3n1yw"]
 [ext_resource type="Script" path="res://player/state_machine.gd" id="3_c66hn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://States/Hold.gd" id="5_l5t5y"]
 [ext_resource type="Script" path="res://States/Block.gd" id="6_rh2ge"]
 [ext_resource type="Script" path="res://States/Attack.gd" id="7_hgta3"]
+[ext_resource type="PackedScene" uid="uid://ch7dribkj158i" path="res://Bar/progress_bar.tscn" id="7_tgvju"]
 [ext_resource type="Script" path="res://States/Won State.gd" id="8_cjonn"]
 [ext_resource type="Script" path="res://States/Lost State.gd" id="9_ka6sb"]
 [ext_resource type="Script" path="res://States/Success.gd" id="9_o1p65"]
@@ -134,6 +135,9 @@ hold_timer = NodePath("Hold Timer")
 wait_time = 0.6
 one_shot = true
 
+[node name="progress bar" parent="State Machine/Hold/Hold Timer" node_paths=PackedStringArray("timer") instance=ExtResource("7_tgvju")]
+timer = NodePath("..")
+
 [node name="Block" type="Node" parent="State Machine" node_paths=PackedStringArray("player", "block_timer")]
 script = ExtResource("6_rh2ge")
 player = NodePath("../..")
@@ -142,6 +146,9 @@ block_timer = NodePath("Block Timer")
 [node name="Block Timer" type="Timer" parent="State Machine/Block"]
 wait_time = 0.45
 one_shot = true
+
+[node name="progress bar" parent="State Machine/Block/Block Timer" node_paths=PackedStringArray("timer") instance=ExtResource("7_tgvju")]
+timer = NodePath("..")
 
 [node name="Attack" type="Node" parent="State Machine" node_paths=PackedStringArray("player", "attack_timer", "windup")]
 script = ExtResource("7_hgta3")
@@ -153,9 +160,15 @@ windup = NodePath("Windup")
 wait_time = 0.6
 one_shot = true
 
+[node name="progress bar" parent="State Machine/Attack/Attack Timer" node_paths=PackedStringArray("timer") instance=ExtResource("7_tgvju")]
+timer = NodePath("..")
+
 [node name="Windup" type="Timer" parent="State Machine/Attack"]
 wait_time = 0.4
 one_shot = true
+
+[node name="progress bar" parent="State Machine/Attack/Windup" node_paths=PackedStringArray("timer") instance=ExtResource("7_tgvju")]
+timer = NodePath("..")
 
 [node name="Won" type="Node" parent="State Machine"]
 script = ExtResource("8_cjonn")
