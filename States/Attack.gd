@@ -2,12 +2,11 @@ class_name Attack extends State
 
 @export var player : Player
 @export var attack_timer : Timer
+@export var windup : Timer
 
 
 func enter():
-	player.current_data.current_action = PlayerData.ATTACK
-	attack_timer.start()
-	player.attack.emit(player.current_data)
+	windup.start()
 
 
 func exit():
@@ -18,3 +17,9 @@ func exit():
 
 func _on_attack_timer_timeout() -> void:
 	transitioned.emit(self, "hold")
+
+
+func winduptimerover():
+	player.current_data.current_action = PlayerData.ATTACK
+	attack_timer.start()
+	player.attack.emit(player.current_data)

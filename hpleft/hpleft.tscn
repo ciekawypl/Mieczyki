@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://hpleft/hpleft.gd" id="1_tn6vn"]
 [ext_resource type="Texture2D" uid="uid://cy0hgi3jy5oju" path="res://hpleft/serce.png" id="2_3sy0w"]
 
-[sub_resource type="Animation" id="Animation_8ysxo"]
-resource_name = "4"
+[sub_resource type="Animation" id="Animation_vslud"]
+resource_name = "0"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect5:self_modulate")
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,32 +29,17 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"hide"
+"method": &"end"
 }]
 }
 
-[sub_resource type="Animation" id="Animation_4hi20"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect5:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_nggnk"]
-resource_name = "3"
+[sub_resource type="Animation" id="Animation_lng76"]
+resource_name = "1"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect4:self_modulate")
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect2:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -108,13 +93,13 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_lng76"]
-resource_name = "1"
+[sub_resource type="Animation" id="Animation_nggnk"]
+resource_name = "3"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect2:self_modulate")
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect4:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -138,13 +123,13 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_vslud"]
-resource_name = "0"
+[sub_resource type="Animation" id="Animation_8ysxo"]
+resource_name = "4"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect:self_modulate")
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect5:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -164,8 +149,23 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"end"
+"method": &"hide"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_4hi20"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/CenterContainer/HBoxContainer/TextureRect5:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sk24i"]

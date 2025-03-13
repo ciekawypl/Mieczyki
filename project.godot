@@ -23,11 +23,6 @@ Global="*res://global.gd"
 
 window/size/viewport_width=800
 window/size/viewport_height=600
-window/size/mode=3
-
-[gui]
-
-theme/custom_font="res://Commodore-64-v6.3.TTF"
 
 [input]
 

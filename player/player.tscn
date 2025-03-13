@@ -131,7 +131,7 @@ player = NodePath("../..")
 hold_timer = NodePath("Hold Timer")
 
 [node name="Hold Timer" type="Timer" parent="State Machine/Hold"]
-wait_time = 0.3
+wait_time = 0.6
 one_shot = true
 
 [node name="Block" type="Node" parent="State Machine" node_paths=PackedStringArray("player", "block_timer")]
@@ -140,16 +140,21 @@ player = NodePath("../..")
 block_timer = NodePath("Block Timer")
 
 [node name="Block Timer" type="Timer" parent="State Machine/Block"]
-wait_time = 0.15
+wait_time = 0.45
 one_shot = true
 
-[node name="Attack" type="Node" parent="State Machine" node_paths=PackedStringArray("player", "attack_timer")]
+[node name="Attack" type="Node" parent="State Machine" node_paths=PackedStringArray("player", "attack_timer", "windup")]
 script = ExtResource("7_hgta3")
 player = NodePath("../..")
 attack_timer = NodePath("Attack Timer")
+windup = NodePath("Windup")
 
 [node name="Attack Timer" type="Timer" parent="State Machine/Attack"]
-wait_time = 0.3
+wait_time = 0.6
+one_shot = true
+
+[node name="Windup" type="Timer" parent="State Machine/Attack"]
+wait_time = 0.4
 one_shot = true
 
 [node name="Won" type="Node" parent="State Machine"]
@@ -185,5 +190,6 @@ centered = false
 [connection signal="timeout" from="State Machine/Hold/Hold Timer" to="State Machine/Hold" method="_on_hold_timer_timeout"]
 [connection signal="timeout" from="State Machine/Block/Block Timer" to="State Machine/Block" method="_on_block_timer_timeout"]
 [connection signal="timeout" from="State Machine/Attack/Attack Timer" to="State Machine/Attack" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="State Machine/Attack/Windup" to="State Machine/Attack" method="winduptimerover"]
 [connection signal="timeout" from="State Machine/Success/Timer" to="State Machine/Success" method="_on_timer_timeout"]
 [connection signal="timeout" from="State Machine/Failure/Timer" to="State Machine/Failure" method="_on_timer_timeout"]
